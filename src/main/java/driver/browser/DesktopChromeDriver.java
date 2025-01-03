@@ -20,10 +20,6 @@ import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.logging.Level;
 
-/**
- * @author isabella.huynh
- * created on Nov/9/2019.
- */
 public class DesktopChromeDriver extends Driver {
 	public DesktopChromeDriver(DriverProperties properties) throws MalformedURLException {
 		super(properties);
@@ -31,6 +27,18 @@ public class DesktopChromeDriver extends Driver {
 		System.out.println(String.format("Picking up ChromeDriver at %s", properties.getExecutablePath()));
 
 		ChromeOptions options = new ChromeOptions();
+
+		// Example settings for ChromeOptions
+		options.addArguments("--start-maximized");// Open browser in maximized mode
+		options.addArguments("--window-size=1920,1080");
+		options.addArguments("--force-device-scale-factor=1");
+		options.addArguments("--high-dpi-support=1.0");
+		options.addArguments("--disable-infobars"); // Disable "Chrome is being controlled" message
+		options.addArguments("--disable-notifications"); // Disable browser notifications
+		options.addArguments("--disable-extensions"); // Disable extensions
+		options.addArguments("--remote-allow-origins=*"); // For specific scenarios
+		options.addArguments("--enable-use-zoom-for-dsf");
+
 
 		//options = configureChromeOptions();
 
@@ -69,7 +77,7 @@ public class DesktopChromeDriver extends Driver {
 			System.setProperty("webdriver.chrome.logfile", "chromedriverlogs.log");
 			System.setProperty("webdriver.chrome.verboseLogging", "true");
 			// Add user-agent for detect by Silence project
-			options.addArguments("user-agent=merito-qa-automation");
+			options.addArguments("user-agent=qa-automation");
 			setWebDriver(new ChromeDriver(options));
 		} else {
 			System.out.println("Normal");

@@ -8,7 +8,7 @@
   <test name="Test">
     <parameter name='browser' value='mac.local.chrome'/>
     <parameter name='isProxy' value='false'/>
-    <parameter name='appname' value='Vic'/>
+    <parameter name='appname' value='VIC'/>
     <groups>
       <run>
         <include name="smoke"/>

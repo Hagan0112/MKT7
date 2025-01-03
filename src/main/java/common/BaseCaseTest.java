@@ -1,11 +1,13 @@
 package common;
 
+import ObjectPage.LandingPage;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import driver.DriverManager;
 import driver.DriverProperties;
 import net.lightbody.bmp.BrowserMobProxy;
+import org.openqa.selenium.JavascriptExecutor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.ITestContext;
@@ -19,8 +21,6 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
 
-import common.Contants.*;
-
 public class BaseCaseTest {
     public static ExtentTest logger;
     public static DriverProperties driverProperties;
@@ -28,6 +28,7 @@ public class BaseCaseTest {
     public static ExtentReports report;
     private static ApplicationContext context;
     public static String urlOriginal;
+    public static LandingPage landingPage;
 
     @BeforeSuite(alwaysRun = true)
     public static void beforeSuite() {
@@ -55,6 +56,7 @@ public class BaseCaseTest {
         driverProperties.setIsProxy(isProxy);
         try {
             createDriver(urlOriginal);
+            landingPage = new LandingPage(appname);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (UnexpectedException e) {
@@ -89,11 +91,11 @@ public class BaseCaseTest {
             System.out.println("driver Properties" + driverProperties.getBrowserName());
             DriverManager.createWebDriver(driverProperties);
             DriverManager.getDriver().setLoadingTimeOut(100);
-            DriverManager.getDriver().maximize();
+
             if (DriverManager.getDriver().getToAvoidTimeOut(url) || count == 0) {
                 log(String.format("RUNNING under the link %s", url));
                 log(String.format("DEBUG: CREATED DRIVER SUCCESSFULLY with COUNT %s and Map Size %s", count, DriverManager.driverMap.size()));
-                System.out.print(String.format("Width x Height is %sx%s", DriverManager.getDriver().getWidth(), DriverManager.getDriver().getHeight()));
+                System.out.print(String.format("Width x Height is %sx%s\n", DriverManager.getDriver().getWidth(), DriverManager.getDriver().getHeight()));
                 break;
             } else {
                 log("DEBUG: QUIT BROWSER DUE TO NOT CONNECTED");
@@ -103,7 +105,7 @@ public class BaseCaseTest {
     }
 
     public static String defineUrl(String appname) {
-        return Contants.URL_FOLLOW_APP_NAME.get(appname);
+        return Contants.URL_MAINSITE_FOLLOW_APP_NAME.get(appname);
     }
 
     public static String log(String message) {

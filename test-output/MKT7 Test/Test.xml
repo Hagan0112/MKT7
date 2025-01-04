@@ -21,7 +21,7 @@ at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
 ... Removed 27 stack frames]]>
     </failure>
   </testcase> <!-- @AfterMethod afterMethod -->
-  <testcase classname="test.CheckTest" name="Check_Test_Vic_Club" time="0.0">
+  <testcase classname="test.MainSiteTest" name="Check_Test_Vic_Club" time="0.0">
     <skipped/>
   </testcase> <!-- Check_Test_Vic_Club -->
 </testsuite> <!-- Test -->

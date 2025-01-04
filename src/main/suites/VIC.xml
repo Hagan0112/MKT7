@@ -16,7 +16,7 @@
     </groups>
 
     <classes>
-      <class name="test.CheckTest"/>
+      <class name="test.MainSiteTest"/>
     </classes>
 
   </test>

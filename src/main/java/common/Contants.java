@@ -22,4 +22,11 @@ public class  Contants {
             put("ZZONETRUYEN", "https://zzonetruyen.com/");
         }
     };
+
+    public static final Map<String, String> URL_REDIRECT = new HashMap<String, String>() {
+        {
+            put("VIC","https://v.vic2.club/");
+            put("NOHU","https://play.nohu.win/");
+        }
+    };
 }

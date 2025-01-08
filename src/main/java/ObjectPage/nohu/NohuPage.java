@@ -25,6 +25,7 @@ public class NohuPage extends HomePage {
         txtPassWord.sendKeys(passWord);
         txtRePassWord.sendKeys(passWord);
         imgChoiNgay.click();
+        System.out.println(String.format("Dang ky voi username: %s va password: %s",loginID,passWord));
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

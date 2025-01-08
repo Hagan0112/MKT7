@@ -29,6 +29,7 @@ public class DesktopChromeDriver extends Driver {
 		ChromeOptions options = new ChromeOptions();
 
 		// Example settings for ChromeOptions
+		options.addArguments("--incognito");
 		options.addArguments("--start-maximized");// Open browser in maximized mode
 		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--force-device-scale-factor=1");
